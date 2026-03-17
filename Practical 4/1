@@ -1,0 +1,22 @@
+# variables.py
+# Pseudocode: store population data, calculate changes, compare, and comment on results
+a = 5.08  # Population in 2004
+b = 5.33  # Population in 2014
+c = 5.55  # Population in 2024
+d = b - a  # Calculate change between 2004 and 2014
+e = c - b  # Calculate change between 2014 and 2024
+
+if d > e:
+    print("Change between 2004-2014 is larger")
+elif d < e:
+    print("Change between 2014-2024 is larger")
+else:
+    print("Changes are equal")                    # Compare d and e
+
+# Boolean section
+X = True
+Y = False
+W = X or Y   # Compute X or Y
+
+# Verify the value of W
+print("W =", W)   # Should output True

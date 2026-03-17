@@ -1,0 +1,43 @@
+# creatine_clearance.py
+# Pseudocode:
+# 1. Get user input: age, weight, gender, Cr
+# 2. Convert inputs to appropriate types (age, weight, Cr to float; gender to string)
+# 3. Check each input against valid ranges; if invalid, print error and exit
+# 4. If all valid, calculate CrCl using the Cockcroft-Gault formula
+# 5. Output the result
+
+# Get inputs
+age = float(input("Enter age (years): "))
+weight = float(input("Enter weight (kg): "))
+gender = input("Enter gender (male/female): ").strip().lower()
+cr = float(input("Enter serum creatinine concentration (μmol/l): "))
+
+# Validate age
+if age >= 100:
+    print("Error: Age must be less than 100 years")
+    exit()   # Exit the program immediately
+
+# Validate weight
+if weight <= 20 or weight >= 80:
+    print("Error: Weight must be between 20 kg and 80 kg (exclusive)")
+    exit()
+
+# Validate creatinine
+if cr <= 0 or cr >= 100:
+    print("Error: Creatinine concentration must be between 0 and 100 μmol/l (exclusive)")
+    exit()
+
+# Validate gender
+if gender not in ["male", "female"]:
+    print("Error: Gender must be either 'male' or 'female'")
+    exit()
+
+# Calculate CrCl (base formula)
+crcl = ((140 - age) * weight) / (72 * cr)
+
+# If female, multiply by 0.85
+if gender == "female":
+    crcl = crcl * 0.85
+
+# Output result
+print("Your creatinine clearance (CrCl) is: {:.2f} ml/min".format(crcl))

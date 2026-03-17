@@ -1,0 +1,27 @@
+# infection.py
+# Pseudocode:
+# 1. Initialize variables: total = 91, infected = 5, rate = 0.4, day = 0
+# 2. While infected < total:
+#    a. Calculate new infections: new_infected = infected * rate
+#    b. Update infected: infected = infected + new_infected
+#    c. If infected exceeds total, set to total
+#    d. Increment day, print infected count for that day
+# 3. Print total days taken
+
+total_students = 91          # Total class size
+infected = 5                 # Initial number of infected individuals
+growth_rate = 0.4            # Daily growth rate (40%)
+day = 0                      # Day counter
+print("Day 0 infected count:", infected)   # Output initial state
+
+while infected < total_students:
+    new_infected = infected * growth_rate
+    infected = infected + new_infected                # Calculate new infections for today (based on current infected count)
+    
+    if infected > total_students:                          # If infected exceeds total, cap at total
+        infected = total_students
+    
+    day = day + 1
+    print("Day {} infected count: {}".format(day, infected))
+
+print("It took {} days to infect all {} students.".format(day, total_students))
