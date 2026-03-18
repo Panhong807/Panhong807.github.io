@@ -1,4 +1,4 @@
-#
+# This code analyzes heart rate data for a group of patients, categorizes the heart rates into low, normal, and high, and visualizes the distribution using a pie chart. It calculates the mean heart rate and counts the number of patients in each category to determine which category has the highest count.
 import matplotlib.pyplot as plt   # Importing the Matplotlib library for plotting
 heart_rate=[72,60,126,85,90,59,76,131,88,121,64]  # Initializing a list with heart rate values
 num_patients=len(heart_rate)  # Calculating the number of patients based on the length of the heart rate list
