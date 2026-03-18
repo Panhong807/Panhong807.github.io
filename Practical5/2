@@ -1,0 +1,39 @@
+# This code analyzes heart rate data for a group of patients, categorizes them into low, normal, and high heart rate groups, and visualizes the distribution using a pie chart.
+import matplotlib.pyplot as plt   # Importing the Matplotlib library for plotting
+heart_rate=[72,60,126,85,90,59,76,131,88,121,64]  # Initializing a list with heart rate values
+num_patients=len(heart_rate)  # Calculating the number of patients based on the length of the heart rate list
+mean_heart_rate=sum(heart_rate)/num_patients  # Calculating the mean heart rate by dividing the sum of heart rates by the number of patients
+print(f"Mean heart rate: {mean_heart_rate:.2f} bpm")  # Printing the mean heart rate formatted to two decimal places
+low=[]
+normal=[]
+high=[]
+for hr in heart_rate:  # Iterating through each heart rate value in the list
+    if hr < 60:  # Checking if the heart rate is less than 60 bpm
+        low.append(hr)  # Adding the heart rate to the 'low' list
+    elif hr <= 100:  # Checking if the heart rate is between 60 and 100 bpm (inclusive)
+        normal.append(hr)  # Adding the heart rate to the 'normal' list
+    else:  # If the heart rate is greater than 100 bpm
+        high.append(hr)  # Adding the heart rate to the 'high' list
+count_low=len(low)  # Counting the number of heart rates in the 'low' category
+count_normal=len(normal)  # Counting the number of heart rates in the 'normal' category
+count_high=len(high)  # Counting the number of heart rates in the 'high' category
+if count_low>=count_normal and count_low>=count_high:  # Checking if the 'low' category has the highest count
+    max_category='Low (<60 bpm)'  # Setting the max category to 'Low' if it has the highest count
+elif count_normal>=count_low and count_normal>=count_high:  # Checking if the 'normal' category has the highest count
+    max_category='Normal (60-120 bpm)'  # Setting the max category to 'Normal' if it has the highest count 
+else:  # If the 'high' category has the highest count
+    max_category='High (>120 bpm)'  # Setting the max category to 'High' if it has the highest count
+print(f"Low heart rate patients: {count_low}")  # Printing the count of patients with low heart rates
+print(f"Normal heart rate patients: {count_normal}")  # Printing the count of patients with normal heart rates
+print(f"High heart rate patients: {count_high}")  # Printing the count of patients with high heart rates
+print(f"Category with the highest number of patients: {max_category}")  # Printing the category that has the highest number of patients
+labels=['Low (<60 bpm)', 'Normal (60-120 bpm)', 'High (>120 bpm)']  # Defining labels for the bar chart categories
+sizes=[count_low, count_normal, count_high]  # Defining the sizes for each category based on the counts
+colors=['lightcoral', 'lightgreen', 'lightblue']  # Defining colors for each category in the bar chart
+explode=(0.1, 0, 0)  # Setting the explode parameter to highlight the 'Low' category in the pie chart
+plt.figure(figsize=(8,5))  # Setting the figure size for the plot
+plt.pie(sizes, explode=explode, labels=labels, colors=colors, autop
+    autopct='%1.1f%%', shadow=True, startangle=140)  # Creating a pie chart with the defined sizes, labels, colors, and other parameters
+plt.title('Heart Rate Distribution')  # Setting the title for the pie chart
+plt.axis('equal')  # Ensuring that the pie chart is circular
+plt.show()  # Displaying the pie chart

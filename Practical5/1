@@ -1,0 +1,20 @@
+# Create a dictionary to store gene expression levels for a set of genes. Add a new gene and its expression level to the dictionary, and then print the updated dictionary. Finally, create a bar chart to visualize the gene expression levels using Matplotlib.
+import matplotlib.pyplot as plt   # Importing the Matplotlib library for plotting
+ gene_expression={'TP53':12.4,'EGFR':15.1,'BRCA1':8.2,'PTEN':5.3,'ESR1':10.7}  # Initializing a dictionary with gene names as keys and their expression levels as values
+ gene_expression['MYC']=11.6   # Adding a new gene 'MYC' with its expression level to the dictionary
+ print("Gene expression dictionary:", gene_expression)
+    genes=list(gene_expression.keys())    # Extracting the gene names from the dictionary to use as labels for the bar chart
+    expression_levels=list(gene_expression.values()) # Extracting the expression levels from the dictionary to use as values for the bar chart
+    plt.figure(figsize=(8,5))
+    plt.bar(genes, expression_levels, color='skyblue')
+    plt.xlabel('Genes') 
+    plt.ylabel('Expression Levels')
+    plt.title('Gene Expression Levels')
+    plt.show()
+    gene_of_intereest='BRCA1'  # Specifying the gene of interest for which we want to find the expression level
+    if gene_of_intereest in gene_expression:  # Checking if the gene of interest    is present in the dictionary
+        print(f"Expression level of {gene_of_intereest}: {gene_expression[gene_of_intereest]}")  # Printing the expression level of the gene of interest
+    else:
+        print(f"{gene_of_intereest} not found in the gene expression dictionary.")  # Printing a message if the gene of interest is not found in the dictionary
+        average_expression=sum(expression_levels)/len(expression_levels)  # Calculating the average expression level across all genes
+        print(f"Average expression level across all genes: {average_expression:.2f}")
