@@ -1,4 +1,4 @@
-# This code analyzes heart rate data for a group of patients, categorizes them into low, normal, and high heart rate groups, and visualizes the distribution using a pie chart.
+#
 import matplotlib.pyplot as plt   # Importing the Matplotlib library for plotting
 heart_rate=[72,60,126,85,90,59,76,131,88,121,64]  # Initializing a list with heart rate values
 num_patients=len(heart_rate)  # Calculating the number of patients based on the length of the heart rate list
@@ -32,8 +32,7 @@ sizes=[count_low, count_normal, count_high]  # Defining the sizes for each categ
 colors=['lightcoral', 'lightgreen', 'lightblue']  # Defining colors for each category in the bar chart
 explode=(0.1, 0, 0)  # Setting the explode parameter to highlight the 'Low' category in the pie chart
 plt.figure(figsize=(8,5))  # Setting the figure size for the plot
-plt.pie(sizes, explode=explode, labels=labels, colors=colors, autop
-    autopct='%1.1f%%', shadow=True, startangle=140)  # Creating a pie chart with the defined sizes, labels, colors, and other parameters
+plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)  # Creating a pie chart with the defined sizes, labels, colors, and other parameters
 plt.title('Heart Rate Distribution')  # Setting the title for the pie chart
 plt.axis('equal')  # Ensuring that the pie chart is circular
 plt.show()  # Displaying the pie chart

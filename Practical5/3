@@ -2,12 +2,11 @@
 import matplotlib.pyplot as plt
 pop_data={'UK': (66.7, 69.2), 'China': (1426, 1410), 'Italy': (59.4, 58.9), 'Brazil': (208.6, 212.0), 'USA': (331.6, 304.1)} # Initializing a dictionary with country names as keys and tuples containing population data (current and previous) as values
 percent_changes={}  # Initializing an empty dictionary to store the percentage changes in population for each country
-for country in pop_data:  # Iterating through each country and its corresponding population data in the dictionary
-   pop2020,pop2024=pop_data[country] # Unpacking the population data for the current country into pop2020 and pop2024 variables
+for country, (pop2020, pop2024) in pop_data.items():  # Iterating through each country and its corresponding population data in the dictionary
    percent_change=((pop2024-pop2020)/pop2020)*100  # Calculating the percentage change in population using the formula: ((current - previous) / previous) * 100
    percent_changes[country]=percent_change  # Storing the calculated percentage change in the 'percent_changes' dictionary with the country as the key
 print("Percentage changes in population from 2020 to 2024:")  # Printing a header for the output
-for country, change in percent_changes:  # Iterating through each country and its corresponding
+for country, change in percent_changes.items():  # Iterating through each country and its corresponding
     print(f"{country}: {change:.2f}%")  # Printing the country name and its percentage change formatted to two decimal places
 countries=list(percent_changes.keys())  # Extracting the country names from the 'percent_changes' dictionary to use as labels for the bar chart
 max_increase_country=countries[0]  # Initializing a variable to keep track of the country with the maximum population increase, starting with the first country in the list
