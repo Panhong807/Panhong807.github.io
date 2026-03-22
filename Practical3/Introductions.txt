@@ -1,0 +1,4 @@
+Hello, my name is Xia Panhong.
+I like drinking cola and eating chocolate.
+I am enjoying teaching IBI1 in person again 
+I am happy that I can push my repo from Visual Studio Code to GitHub
