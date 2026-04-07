@@ -1,31 +1,70 @@
-import matplotlib.pyplot as plt 
-stop=input("Enter the stop codon sequence (TAA, TAG, TGA): ") # Prompt the user to enter a stop codon sequence
-codon_counts = {} # Initialize an empty dictionary to store codon counts
-file=open('stop_genes.fa', 'r') # Open the file containing gene sequences
-seq='' # Initialize an empty string to store the current gene sequence
-for line in file: # Loop through each line in the file
-    line=line.strip() # Remove any leading or trailing whitespace
-    if line.startswith('>'): # Check if the line is a header (starts with '>')
-        seq = '' # Reset the sequence variable for the next gene
+# This script reads a FASTA file containing cDNA sequences of Saccharomyces cerevisiae, identifies the longest open reading frame (ORF) for each gene, and determines the stop codon used in that ORF. The results are written to a new FASTA file with the gene name and the stop codon used.
+import matplotlib.pyplot as plt
+stop = input("Enter stop codon (TAA, TAG, TGA): ")
+stop = stop.upper()
+file = open("stop_genes.fa", "r")
+seq = ""
+codon_count = {}
+for line in file:
+    line = line.strip()
+    if line.startswith(">"):
+        if seq != "":
+            longest_orf = ""
+            for i in range(len(seq) - 2):
+                if seq[i:i+3] == "ATG":
+                    current_orf = ""
+                    for j in range(i, len(seq)-2, 3):
+                        codon = seq[j:j+3]
+                        current_orf = current_orf + codon
+                        if codon == stop:
+                            if len(current_orf) > len(longest_orf):
+                                longest_orf = current_orf
+                            break
+            if longest_orf != "":
+                coding = longest_orf[:-3]
+                for i in range(0, len(coding), 3):
+                    codon = coding[i:i+3]
+                    if codon in codon_count:
+                        codon_count[codon] = codon_count[codon] + 1
+                    else:
+                        codon_count[codon] = 1
+        seq = ""
     else:
-        seq+=line # Append the current line to the sequence variable
-        if stop in seq: # Check if the specified stop codon is present in the sequence
-            pos=seq.find(stop) # Find the position of the stop codon in the sequence
-            codon=seq[pos:pos+3] # Extract the codon from the sequence
-            for i in range(0, len(seq)-2, 3): # Loop through the sequence in steps of 3 (codon length)
-                current_codon=seq[i:i+3] # Get the current codon
-                if current_codon == codon: # Check if the current codon matches the specified stop codon
-                    if codon in codon_counts: # If the codon is already in the dictionary, increment its count
-                        codon_counts[codon] += 1
-                    else: # If the codon is not in the dictionary, add it with a count of 1
-                        codon_counts[codon] = 1
-labels=list(codon_counts.keys()) # Get the list of codon labels from the dictionary keys
-sizes=list(codon_counts.values()) # Get the list of codon counts from the dictionary values
-plt.figure() # Create a new figure for the pie chart
-plt.pie(sizes, labels=labels, autopct='%1.1f%%') # Create a pie chart with the codon counts and labels
-plt.title(f"Distribution of {stop} Codons in stop_genes.fa") # Set the title of the pie chart
-plt.axis('equal') # Ensure the pie chart is circular
-plt.savefig("codon_pie.png") # Save the pie chart as a PNG file
-plt.show() # Display the pie chart
-plt.close() # Close the plot to free up memory
-file.close() # Close the file after processing
+        seq = seq + line
+if seq != "":
+    longest_orf = ""
+
+    for i in range(len(seq) - 2):
+        if seq[i:i+3] == "ATG":
+
+            current_orf = ""
+
+            for j in range(i, len(seq)-2, 3):
+                codon = seq[j:j+3]
+                current_orf = current_orf + codon
+
+                if codon == stop:
+                    if len(current_orf) > len(longest_orf):
+                        longest_orf = current_orf
+                    break
+    if longest_orf != "":
+        coding = longest_orf[:-3]
+        for i in range(0, len(coding), 3):
+            codon = coding[i:i+3]
+            if codon in codon_count:
+                codon_count[codon] = codon_count[codon] + 1
+            else:
+                codon_count[codon] = 1
+file.close()
+labels = []
+sizes = []
+for codon in codon_count:
+    if codon_count[codon] > 0:
+        labels.append(codon)
+        sizes.append(codon_count[codon])
+plt.figure()
+plt.pie(sizes, labels=labels)
+plt.title("Codon usage for " + stop)
+plt.savefig("codon_usage_" + stop + ".png")
+plt.close()
+print("Pie chart saved")
