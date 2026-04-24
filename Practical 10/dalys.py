@@ -3,7 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt   
 import numpy as np     
 
-os.chdir('C:/Users/HP/Desktop/Practical 10')
+# Use the script's own folder so the code works on any machine.
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 print(os.getcwd())
 print(os.listdir())
 
@@ -26,23 +27,23 @@ print(zimbabwe_years)
 print(zimbabwe_years.min()) #find the minimum year in the Zimbabwe dataset
 print(zimbabwe_years.max()) #find the maximum year in the Zimbabwe dataset
 
-recent_data=dalys_data.loc[dalys_data['Year']==2019, ['Entity', 'DALYs (rate)']] #filter the dataset for the year 2019 and select the Entity and DALYs (rate) columns
-max_country=recent_data.loc[recent_data['DALYs (rate)'].idxmax()]
-min_country=recent_data.loc[recent_data['DALYs (rate)'].idxmin()]
+recent_data=dalys_data.loc[dalys_data['Year']==2019, ['Entity', 'DALYs']] #filter the dataset for the year 2019 and select the Entity and DALYs columns
+max_country=recent_data.loc[recent_data['DALYs'].idxmax()]
+min_country=recent_data.loc[recent_data['DALYs'].idxmin()]
 print(max_country)
 print(min_country)
 
 country_name=max_country['Entity']
-country_data=dalys_data[dalys_data['Entity'] == country_name] #filter the dataset for the country with the maximum DALYs (rate) in 2019
-plt.plot(country_data['Year'], country_data['DALYs (rate)']) #plot the DALYs (rate) over time for the country with the maximum DALYs (rate) in 2019
+country_data=dalys_data[dalys_data['Entity'] == country_name] #filter the dataset for the country with the maximum DALYs in 2019
+plt.plot(country_data['Year'], country_data['DALYs']) #plot the DALYs over time for the country with the maximum DALYs in 2019
 plt.xlabel('Year')
-plt.ylabel('DALYs (rate)')
-plt.title(f'DALYs (rate) over time for {country_name}')
+plt.ylabel('DALYs')
+plt.title(f'DALYs over time for {country_name}')
 plt.xticks(rotation=-90)
 plt.show()
 
-plt.hist(recent_data["DALYs (rate)"])
-plt.xlabel("DALYs (rate)")
+plt.hist(recent_data["DALYs"])
+plt.xlabel("DALYs")
 plt.ylabel("Frequency")
-plt.title("Distribution of DALYs (rate) in 2019")
+plt.title("Distribution of DALYs in 2019")
 plt.show()
