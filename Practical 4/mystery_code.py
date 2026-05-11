@@ -1,5 +1,5 @@
 # What does this piece of code do?
-# Answer: This code simulates a process where it draws random numbers between 1 and 10, adds them up, and keeps track of the progress until it reaches 10. Finally, it prints the total of the drawn random numbers.
+# Answer: This code generates 11 random numbers between 1 and 10 and prints their sum.
 
 # Import libraries
 # randint allows drawing a random number,
@@ -18,4 +18,3 @@ while progress<=10:    # Loop until progress is greater than 10
 	total_rand+=n  # Add the drawn number to total_rand
 
 print(total_rand)   # Print the total of the drawn random numbers
-
