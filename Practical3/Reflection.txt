@@ -1,1 +1,3 @@
-It is really an amazing journey.
+This practical helped me become more familiar with using GitHub and organizing files in a repository.
+I learned how to edit text files, upload changes, and keep my work in a clear folder structure.
+I also realised that writing more detailed notes and commit messages is important because it helps explain what I changed and why.
