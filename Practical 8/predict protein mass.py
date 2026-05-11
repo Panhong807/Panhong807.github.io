@@ -1,22 +1,24 @@
-# This script defines a function to calculate the total mass of a protein based on its amino acid sequence. It uses a dictionary to store the mass of each amino acid and iterates through the sequence to sum up the total mass. If an invalid amino acid is found, it raises an error.
+# This script defines a function to calculate the total mass of a protein based on its amino acid sequence.
+# It uses a dictionary to store the mass of each amino acid and returns a clear error message if an invalid
+# amino acid is found.
 def protein_mass(sequence):
     """
     Input: sequence (string) - amino acid sequence
     Returns: total mass of protein (float, amu)
 
-    Raises an error if invalid amino acid is found
+    Returns an error message if an invalid amino acid is found
     """
     aa_mass = {
-        'A': 89.1, 'R': 174.2, 'N': 132.1, 'D': 133.1,
-        'C': 121.2, 'E': 147.1, 'Q': 146.2, 'G': 75.1,
-        'H': 155.2, 'I': 131.2, 'L': 131.2, 'K': 146.2,
-        'M': 149.2, 'F': 165.2, 'P': 115.1, 'S': 105.1,
-        'T': 119.1, 'W': 204.2, 'Y': 181.2, 'V': 117.1
+        'A': 71.04, 'R': 156.10, 'N': 114.04, 'D': 115.03,
+        'C': 103.01, 'E': 129.04, 'Q': 128.06, 'G': 57.02,
+        'H': 137.06, 'I': 113.08, 'L': 113.08, 'K': 128.09,
+        'M': 131.04, 'F': 147.07, 'P': 97.05, 'S': 87.03,
+        'T': 101.05, 'W': 186.08, 'Y': 163.06, 'V': 99.07
     }
     total_mass = 0
     for aa in sequence:
         if aa not in aa_mass:
-            raise ValueError(f"Invalid amino acid: {aa}")
+            return f"Error: invalid amino acid '{aa}'"
         total_mass += aa_mass[aa]
     return total_mass
 seq = "ACDE"
