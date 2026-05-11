@@ -1,0 +1,9 @@
+This practical was one of the more challenging ones because the models were probabilistic,
+so the output changed each time the code ran and I had to think carefully about whether the
+behaviour still made sense.
+
+I found the basic SIR model easier to understand than the spatial version, because the spatial
+model required me to think about neighbours, grids, and repeated plotting over time.
+
+The most useful thing I learned was how to turn a biological idea into a simulation and then
+interpret the resulting plots to understand infection spread and recovery.
