@@ -1,0 +1,13 @@
+Dear all,
+
+I am writing to describe how I responded to the formative feedback that I received for my IBI1 portfolio.
+Thank you for the feedback. I have read through the comments carefully and made changes to address the points that were raised.
+
+For Practical 3, I edited Reflection.txt. The previous reflection was too short, so I expanded it to include more detail about what I learned from using GitHub, editing files, and writing clearer notes about my work.
+
+For Practical 4, I renamed the files so that the scripts have clearer names. I also edited variables.py to add the comment that population growth is decelerating and included the missing truth table for W = X or Y. I edited mystery_code.py so that the explanation clearly states that the code generates 11 random numbers between 1 and 10 and prints their sum.
+
+For Practical 5, I moved the work into clearly named files: gene_expression.py, heart_rates.py, and population_growth.py. In heart_rates.py, I added code to print the number of patients and corrected the normal heart rate category so that it goes up to 120 bpm.
+
+Best wishes,
+Panhong
