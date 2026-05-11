@@ -2,7 +2,7 @@ Question:
 What is the distribution of DALYs across all countries in 2019?
 
 Line number:
-Line 45 in dalys.py
+Line 48 in dalys.py
 
 Discussion:
 The distribution of DALYs in 2019 is highly uneven across countries. Most countries have relatively low DALYs values, while a small number of countries show very high values. This results in a right-skewed distribution.

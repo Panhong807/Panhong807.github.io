@@ -19,10 +19,12 @@ print(subset)
 
 afg=dalys_data[dalys_data['Entity'] == 'Afghanistan'] #filter the dataset for Afghanistan
 afg_first10=afg.iloc[0:10]
-max_year=afg_first10['Year'].max() #find the maximum year in the subset
+max_year=afg_first10.loc[afg_first10['DALYs'].idxmax(), 'Year'] #find the year with the maximum DALYs in the subset
+# Across the first 10 Afghanistan rows (1990-1999), the maximum DALYs value occurs in 1998.
 print(max_year)
 
 zimbabwe_years=dalys_data[dalys_data['Entity'] == 'Zimbabwe']['Year'] #filter the dataset for Zimbabwe and get the years
+# Zimbabwe has DALYs data recorded from 1990 to 2019.
 print(zimbabwe_years)
 print(zimbabwe_years.min()) #find the minimum year in the Zimbabwe dataset
 print(zimbabwe_years.max()) #find the maximum year in the Zimbabwe dataset
@@ -30,6 +32,7 @@ print(zimbabwe_years.max()) #find the maximum year in the Zimbabwe dataset
 recent_data=dalys_data.loc[dalys_data['Year']==2019, ['Entity', 'DALYs']] #filter the dataset for the year 2019 and select the Entity and DALYs columns
 max_country=recent_data.loc[recent_data['DALYs'].idxmax()]
 min_country=recent_data.loc[recent_data['DALYs'].idxmin()]
+# In 2019, Lesotho has the maximum DALYs and Singapore has the minimum DALYs.
 print(max_country)
 print(min_country)
 
